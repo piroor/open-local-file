@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<RDF:RDF xmlns:em="http://www.mozilla.org/2004/em-rdf#"
+         xmlns:NC="http://home.netscape.com/NC-rdf#"
+         xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <RDF:Description RDF:about="urn:mozilla:install-manifest"
+                   em:id="open-local-file@piro.sakura.ne.jp"
+                   em:name="Open Local File"
+                   em:version="0.1"
+                   em:creator="YUKI &quot;Piro&quot; Hiroshi"
+                   em:description="Provides ability to open local file."
+                   em:homepageURL="https://github.com/piroor/open-local-file"
+                   em:bootstrap="true"
+                   em:type="2">
+
+    <em:updateURL></em:updateURL>
+    <em:updateKey></em:updateKey>
+
+    <em:localized>
+      <RDF:Description em:locale="en-US"
+                       em:name="Open Local File"
+                       em:description="Provides ability to open local file."
+                       em:homepageURL="https://github.com/piroor/open-local-file"
+                       em:creator="YUKI &quot;Piro&quot; Hiroshi">
+      </RDF:Description>
+    </em:localized>
+    <em:localized>
+      <RDF:Description em:locale="ja"
+                       em:name="ローカルファイルを開く"
+                       em:description="ローカルファイルを開く機能を提供します。"
+                       em:homepageURL="https://github.com/piroor/open-local-file"
+                       em:creator="YUKI &quot;Piro&quot; Hiroshi">
+      </RDF:Description>
+    </em:localized>
+
+    <!-- Firefox for Android -->
+    <em:targetApplication>
+      <RDF:Description em:id="{aa3c5121-dab2-40e2-81ca-7ea25febc110}"
+                       em:minVersion="24.0"
+                       em:maxVersion="28.0a1" />
+    </em:targetApplication>
+  </RDF:Description>
+</RDF:RDF>
