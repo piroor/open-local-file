@@ -5,6 +5,9 @@
 load('lib/WindowManager');
 load('lib/prefs');
 
+var bundle = require('lib/locale')
+				.get('chrome://open-local-file/locale/open-local-file.properties');
+
 var PREF_BASE     = 'extensions.open-local-file@piro.sakura.ne.jp.';
 var PREF_LAST_DIR = PREF_BASE + 'lastDir';
 
@@ -21,14 +24,14 @@ function onCommand() {
 	var browserWindow = WindowManager.getWindow(TYPE_BROWSER);
 	var picker = Cc['@mozilla.org/filepicker;1']
 					.createInstance(Ci.nsIFilePicker);
-	picker.init(browserWindow, 'choose a file', picker.modeOpen);
+	picker.init(browserWindow, bundle.getString('picker.title'), picker.modeOpen);
 	try {
 		var dir = prefs.getPref(PREF_LAST_DIR, Ci.nsILocalFile);
 		if (dir)
 			picker.displayDirectory = dir;
 	}
 	catch(error) {
-		Cu.reportError(error);
+		// Cu.reportError(error);
 	}
 	picker.appendFilters(picker.filterAll);
 	picker.open({ done: function(aResult) {
@@ -50,7 +53,7 @@ function handleWindow(aWindow)
 		return;
 
 	var id = aWindow.NativeWindow.menu.add({
-		name     : 'Open Local File',
+		name     : bundle.getString('menu.label'),
 		icon     : '',
 		parent   : aWindow.NativeWindow.menu.toolsMenuID,
 		callback : onCommand
@@ -70,5 +73,6 @@ function shutdown()
 	WindowManager = undefined;
 	prefs = undefined;
 	config = undefined;
+	bundle = undefined;
 	menuIDs = undefined;
 }
