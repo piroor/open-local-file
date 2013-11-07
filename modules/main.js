@@ -37,6 +37,7 @@ function onCommand() {
 		var file = picker.file.QueryInterface(Ci.nsILocalFile);
 		if (!file.exists())
 			return;
+		prefs.setPref(PREF_LAST_DIR, file.parent, Ci.nsILocalFile);
 		var url = Services.io.newFileURI(file);
 		browserWindow.BrowserApp.addTab(url.spec);
 	}});
