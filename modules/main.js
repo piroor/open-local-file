@@ -11,8 +11,7 @@ var bundle = require('lib/locale')
 var PREF_BASE     = 'extensions.open-local-file@piro.sakura.ne.jp.';
 var PREF_LAST_DIR = PREF_BASE + 'lastDir';
 
-var config = require('lib/config');
-config.setDefault(PREF_LAST_DIR, '');
+prefs.setDefaultPref(PREF_LAST_DIR, '');
 
 Cu.import('resource://gre/modules/Services.jsm');
 
