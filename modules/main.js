@@ -25,7 +25,7 @@ function onCommand() {
 					.createInstance(Ci.nsIFilePicker);
 	picker.init(browserWindow, bundle.getString('picker.title'), picker.modeOpen);
 	try {
-		var dir = prefs.getPref(PREF_LAST_DIR, Ci.nsILocalFile);
+		var dir = prefs.getPref(PREF_LAST_DIR, Ci.nsIFile);
 		if (dir)
 			picker.displayDirectory = dir;
 	}
@@ -36,10 +36,10 @@ function onCommand() {
 	picker.open({ done: function(aResult) {
 		if (aResult != picker.returnOK)
 			return;
-		var file = picker.file.QueryInterface(Ci.nsILocalFile);
+		var file = picker.file.QueryInterface(Ci.nsIFile);
 		if (!file.exists())
 			return;
-		prefs.setPref(PREF_LAST_DIR, file.parent, Ci.nsILocalFile);
+		prefs.setPref(PREF_LAST_DIR, file.parent, Ci.nsIFile);
 		var url = Services.io.newFileURI(file);
 		browserWindow.BrowserApp.addTab(url.spec);
 	}});
